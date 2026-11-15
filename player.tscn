@@ -1,56 +1,98 @@
 [gd_scene format=3 uid="uid://ckudr8chj1kgo"]
 
 [ext_resource type="Script" uid="uid://dgemna2cprj7k" path="res://player.gd" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://0wagd05k67ic" path="res://SonicSprite.webp" id="2_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://djw2i360s3ata" path="res://spiderMan/spiderRun1.png" id="2_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://c6y2we8s5o3n0" path="res://spiderMan/spiderIdle.png" id="2_hqtel"]
+[ext_resource type="Texture2D" uid="uid://cwbg1tm4cfa4i" path="res://spiderMan/spiderRun2.png" id="3_1jxqw"]
+[ext_resource type="Texture2D" uid="uid://emxea0rvmfkr" path="res://spiderMan/New_Project__13_-Picsart-AiImageEnhancer-removebg-preview.png" id="3_dw050"]
 [ext_resource type="Texture2D" uid="uid://dj5sqix6goqog" path="res://SPrimeRing.webp" id="3_hqtel"]
-[ext_resource type="Texture2D" uid="uid://bbpfssjyik88u" path="res://2671139-81283544-10292026-IMGSET.jpeg" id="4_hqtel"]
-[ext_resource type="Texture2D" uid="uid://c262se1nqjjv" path="res://c4c8e2c0479659b201eed1b5c284d6a7.jpg" id="5_sweqy"]
+[ext_resource type="Texture2D" uid="uid://cjina7q4jvsru" path="res://spiderMan/spiderRun3.png" id="4_dw050"]
+[ext_resource type="Texture2D" uid="uid://8vxlnalnqs5g" path="res://backgroundPhoto.png" id="4_hqtel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_je5hr"]
-size = Vector2(233, 186)
+size = Vector2(120, 127)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i3pqv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hqtel")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_dw050")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2hs0m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1jxqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dw050")
+}],
+"loop": 1,
+"name": &"run",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_je5hr"]
 radius = 92.23403
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
-size = Vector2(165, 152)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t7r1c"]
+size = Vector2(174.125, 68.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n7ghd"]
+size = Vector2(1161, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw050"]
+size = Vector2(293.5625, 74.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b26j0"]
+size = Vector2(167.5625, 60.125)
 
 [node name="Node2D" type="Node2D" unique_id=1766070154]
-position = Vector2(941, 330)
+position = Vector2(929, 366)
 
-[node name="player" type="CharacterBody2D" parent="." unique_id=609098817]
-position = Vector2(-281, -1)
+[node name="player1" type="CharacterBody2D" parent="." unique_id=609098817]
+position = Vector2(-1034, 49)
 script = ExtResource("1_onrkg")
 
-[node name="playerSprite" type="Sprite2D" parent="player" unique_id=1858662089]
-position = Vector2(220.50002, 144.5)
-scale = Vector2(0.7207032, 0.50195307)
-texture = ExtResource("2_i3pqv")
-
-[node name="pickupArea" type="Area2D" parent="player" unique_id=1002811572]
-position = Vector2(216, 138)
-
-[node name="sonicHitbox" type="CollisionShape2D" parent="player/pickupArea" unique_id=1533574241]
-position = Vector2(10, 9)
+[node name="player1Hitbox" type="CollisionShape2D" parent="player1" unique_id=1533574241]
+position = Vector2(213, 157.5)
 shape = SubResource("RectangleShape2D_je5hr")
 
-[node name="pickupRing" type="Sprite2D" parent="player" unique_id=1697027958]
-visible = false
-position = Vector2(86, 128)
-rotation = -6.3758025
-scale = Vector2(0.23639995, 0.1804949)
-texture = ExtResource("3_hqtel")
+[node name="player1Sprite" type="AnimatedSprite2D" parent="player1" unique_id=963050549]
+position = Vector2(221.00002, 165)
+scale = Vector2(0.4120408, 0.46951497)
+sprite_frames = SubResource("SpriteFrames_i3pqv")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="player" unique_id=25192358]
+[node name="pickupArea" type="Area2D" parent="player1" unique_id=1002811572]
+position = Vector2(216, 138)
 
-[node name="ringCountDisplay" type="Label" parent="player/CanvasLayer" unique_id=880880798]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="CanvasLayer" type="CanvasLayer" parent="player1" unique_id=25192358]
+
+[node name="ringCountDisplay" type="Label" parent="player1/CanvasLayer" unique_id=880880798]
+offset_left = -305.0
+offset_top = 101.0
+offset_right = -254.0
+offset_bottom = 124.0
 scale = Vector2(2.6234624, 2.8561258)
 text = "Rings: "
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="player1" unique_id=1681871503]
+
 [node name="ringArea" type="Area2D" parent="." unique_id=1062239889 groups=["ringGroup"]]
-position = Vector2(-208, -7)
+position = Vector2(-839.99994, 302.00003)
 rotation = 0.027615953
 scale = Vector2(1.0334867, 1.1613367)
 
@@ -60,25 +102,34 @@ scale = Vector2(0.37495178, 0.29527944)
 texture = ExtResource("3_hqtel")
 
 [node name="ringHitbox" type="CollisionShape2D" parent="ringArea" unique_id=1794167497]
-position = Vector2(-537.7394, -164.21431)
+position = Vector2(-535.3853, -159.12021)
 scale = Vector2(0.75827247, 0.6041966)
 shape = SubResource("CircleShape2D_je5hr")
 
-[node name="ringBasket2" type="Area2D" parent="." unique_id=10782110 groups=["basketGroup"]]
-
-[node name="basketSprite" type="Sprite2D" parent="ringBasket2" unique_id=667399896]
-position = Vector2(44.99994, -226.00002)
-scale = Vector2(0.16823937, 0.16723771)
+[node name="background" type="Sprite2D" parent="." unique_id=1760794950]
+z_index = -5
+position = Vector2(-341.24994, -36.000008)
+scale = Vector2(0.64655167, 0.6501977)
 texture = ExtResource("4_hqtel")
 
-[node name="basketHitbox" type="CollisionShape2D" parent="ringBasket2" unique_id=1020114248 groups=["basketGroup"]]
-position = Vector2(44.5, -225)
-shape = SubResource("RectangleShape2D_hqtel")
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=941537663]
 
-[node name="background" type="Sprite2D" parent="." unique_id=1151302747]
-z_index = -5
-position = Vector2(-385, 11)
-scale = Vector2(3.4658313, 3.120465)
-texture = ExtResource("5_sweqy")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=617954791]
+position = Vector2(59, 50)
+shape = SubResource("RectangleShape2D_t7r1c")
 
-[connection signal="area_entered" from="player/pickupArea" to="player" method="_on_pickup_area_area_entered"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=189916108]
+position = Vector2(-341.5, 394)
+shape = SubResource("RectangleShape2D_n7ghd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1973480410]
+position = Vector2(-355, -93)
+shape = SubResource("RectangleShape2D_dw050")
+one_way_collision = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=283714761]
+position = Vector2(-746.78125, -5.0625)
+shape = SubResource("RectangleShape2D_b26j0")
+one_way_collision = true
+
+[connection signal="area_entered" from="player1/pickupArea" to="player1" method="_on_pickup_area_area_entered"]
