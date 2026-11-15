@@ -64,6 +64,9 @@ size = Vector2(293.5625, 74.25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b26j0"]
 size = Vector2(167.5625, 60.125)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_t7r1c"]
+radius = 67.27105
+
 [node name="Node2D" type="Node2D" unique_id=1766070154]
 position = Vector2(929, 366)
 
@@ -159,5 +162,8 @@ scale = Vector2(0.825, 0.8375)
 texture = ExtResource("9_b26j0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="web1" unique_id=1060182502 groups=["cobwebGroup"]]
+position = Vector2(-8.695641, 8)
+scale = Vector2(0.7826116, 1)
+shape = SubResource("CircleShape2D_t7r1c")
 
 [connection signal="area_entered" from="player1/pickupArea" to="player1" method="_on_pickup_area_area_entered"]
