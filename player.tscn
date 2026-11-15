@@ -8,9 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dj5sqix6goqog" path="res://SPrimeRing.webp" id="3_hqtel"]
 [ext_resource type="Texture2D" uid="uid://cjina7q4jvsru" path="res://spiderMan/spiderRun3.png" id="4_dw050"]
 [ext_resource type="Texture2D" uid="uid://8vxlnalnqs5g" path="res://backgroundPhoto.png" id="4_hqtel"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_je5hr"]
-size = Vector2(120, 127)
+[ext_resource type="Texture2D" uid="uid://206uq8cd8in" path="res://spiderMan/Cobweb.webp" id="9_b26j0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_i3pqv"]
 animations = [{
@@ -45,6 +43,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_je5hr"]
+size = Vector2(120, 127)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_je5hr"]
 radius = 92.23403
 
@@ -70,10 +71,6 @@ position = Vector2(929, 366)
 position = Vector2(-1034, 49)
 script = ExtResource("1_onrkg")
 
-[node name="player1Hitbox" type="CollisionShape2D" parent="player1" unique_id=1533574241]
-position = Vector2(213, 157.5)
-shape = SubResource("RectangleShape2D_je5hr")
-
 [node name="player1Sprite" type="AnimatedSprite2D" parent="player1" unique_id=963050549]
 position = Vector2(221.00002, 165)
 scale = Vector2(0.4120408, 0.46951497)
@@ -81,6 +78,10 @@ sprite_frames = SubResource("SpriteFrames_i3pqv")
 
 [node name="pickupArea" type="Area2D" parent="player1" unique_id=1002811572]
 position = Vector2(216, 138)
+
+[node name="player1Hitbox" type="CollisionShape2D" parent="player1" unique_id=1533574241]
+position = Vector2(213, 157.5)
+shape = SubResource("RectangleShape2D_je5hr")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="player1" unique_id=25192358]
 
@@ -147,5 +148,16 @@ one_way_collision = true
 position = Vector2(-746.78125, -5.0625)
 shape = SubResource("RectangleShape2D_b26j0")
 one_way_collision = true
+
+[node name="web1" type="Area2D" parent="." unique_id=782291542 groups=["cobwebGroup"]]
+position = Vector2(-567, 188)
+scale = Vector2(0.9200012, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="web1" unique_id=329057665 groups=["cobwebGroup"]]
+position = Vector2(-14, 13)
+scale = Vector2(0.825, 0.8375)
+texture = ExtResource("9_b26j0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="web1" unique_id=1060182502 groups=["cobwebGroup"]]
 
 [connection signal="area_entered" from="player1/pickupArea" to="player1" method="_on_pickup_area_area_entered"]

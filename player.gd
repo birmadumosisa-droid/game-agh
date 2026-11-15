@@ -55,10 +55,8 @@ func _physics_process(delta): # movement function
 			player1sprite.play("run")
 			
 	if move_direction < 0:## flip logic
-			print("going backwards")
 			player1sprite.flip_h = true
 	elif move_direction > 0:
-			print("going forward")
 			player1sprite.flip_h = false
 		#### 
 	move_and_slide()
@@ -76,8 +74,9 @@ func _physics_process(delta): # movement function
 
 func _on_pickup_area_area_entered(area: Area2D) -> void: 
 		if area.is_in_group("cobwebGroup"):
-			$cobweb.visible = false
-			$cobweb.queue_free()
+			area.visible = false
+			area.queue_free()
+			cobwebPoints += 1
 			$CanvasLayer/CobwebPoints.text = "Cobwebs: " + str(cobwebPoints)
 			
 		##if area.is_in_group("basketGroup") and $pickupRing.visible: # if object touched is the bascket
