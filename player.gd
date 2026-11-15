@@ -18,20 +18,26 @@ var currentState = "default"
 ## export gravity 
 @export var speed = 500
 @export var gravity = 980
-@export var jump_force = -400
+@export var jump_force = -500
 var doubleJump = false
-
+var jumps = 0
+var cobwebPoints = 0
 
 func _physics_process(delta): # movement function 
 	if not is_on_floor() && not doubleJump: # make gravity pull player down to ground 
 		velocity.y += gravity * delta
+		doubleJump = true 
 	elif is_on_floor():
 		doubleJump = false
-	
-	if Input.is_action_just_pressed("p1_jump"): # make player jump when press space 
+		jumps = 0
+	if Input.is_action_just_pressed("p1_jump") && not jumps > 2: # make player jump when press space 
 		velocity.y = jump_force
-		if doubleJump:
-			velocity.y *= 2
+		jumps += 1
+		print(jumps)
+		currentState = "jumping"
+	elif jumps > 2 or jumps == 2:
+		currentState = "default"
+		
 	## horizontal movement 
 	var move_direction = Input.get_axis("p1_left", "p1_right") 
 	velocity.x =  move_direction * speed # set side to side speed 
@@ -48,21 +54,13 @@ func _physics_process(delta): # movement function
 	if currentState == "running":
 			player1sprite.play("run")
 			
-
-
-
-
-
-
-		## flip logic
-	if move_direction < 0:
-			print("going backwards")
+	if move_direction < 0:## flip logic
 			player1sprite.flip_h = true
 	elif move_direction > 0:
-			print("going forward")
 			player1sprite.flip_h = false
 		#### 
 	move_and_slide()
+	jump_force = -500
 	doubleJump = false
 
 
@@ -74,12 +72,12 @@ func _physics_process(delta): # movement function
 						##print("hi")
 
 
-##func _on_pickup_area_area_entered(area: Area2D) -> void: ## referring to the orange's area
-		##if area.is_in_group("ringGroup") and not $pickupRing.visible: ## if that is a ring, then delete it
-			##area.queue_free() ## free from the workspace
-			##$pickupRing.visible = true ## make orange
-			##speed = speed * 5 
-			# play a sound 
+func _on_pickup_area_area_entered(area: Area2D) -> void: 
+		if area.is_in_group("cobwebGroup"):
+			area.visible = false
+			area.queue_free()
+			cobwebPoints += 1
+			$CanvasLayer/CobwebPoints.text = "Cobwebs: " + str(cobwebPoints)
 			
 		##if area.is_in_group("basketGroup") and $pickupRing.visible: # if object touched is the bascket
 			##$pickupRing.visible = false
@@ -87,6 +85,7 @@ func _physics_process(delta): # movement function
 			##speed = speed / 5
 			##ringCount += 1
 			# add 1 to rings counter
+
 			##$CanvasLayer/ringCountDisplay.text = "Rings: " + str(ringCount)
 
 
