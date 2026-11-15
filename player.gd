@@ -88,3 +88,8 @@ func _physics_process(delta): # movement function
 			##ringCount += 1
 			# add 1 to rings counter
 			##$CanvasLayer/ringCountDisplay.text = "Rings: " + str(ringCount)
+
+
+func _on_pickuparea_area_entered(area: Area2D) -> void:
+	if area.is_in_group("web"):
+				area.queue_free()
