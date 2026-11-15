@@ -75,15 +75,15 @@ func _physics_process(delta): # movement function
 
 
 func _on_pickup_area_area_entered(area: Area2D) -> void: 
-		if area.is_in_group("trampolineGroup"): 
-			jump_force = jump_force - 100
-		
-		if area.is_in_group("catGroup") and cobwebPoints == 8:
-			print("saved the cat now!")
+		if area.is_in_group("cobwebGroup"):
+			$cobweb.visible = false
+			$cobweb.queue_free()
+			$CanvasLayer/CobwebPoints.text = "Cobwebs: " + str(cobwebPoints)
+			
 		##if area.is_in_group("basketGroup") and $pickupRing.visible: # if object touched is the bascket
 			##$pickupRing.visible = false
 			##$pickupRing.queue_free()
 			##speed = speed / 5
 			##ringCount += 1
 			# add 1 to rings counter
-			##$CanvasLayer/ringCountDisplay.text = "Rings: " + str(ringCount)
+			##

@@ -8,8 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dj5sqix6goqog" path="res://SPrimeRing.webp" id="3_hqtel"]
 [ext_resource type="Texture2D" uid="uid://cjina7q4jvsru" path="res://spiderMan/spiderRun3.png" id="4_dw050"]
 [ext_resource type="Texture2D" uid="uid://8vxlnalnqs5g" path="res://backgroundPhoto.png" id="4_hqtel"]
-[ext_resource type="Texture2D" uid="uid://dlqotw32mxwjo" path="res://spiderMan/stock-vector-tropical-pixel-tree-with-tropical-vines-pixel-art-gaming-assets-bit-style-vector-isolated-2255025695-removebg-preview.png" id="9_n7ghd"]
-[ext_resource type="Texture2D" uid="uid://5go301ufrgvq" path="res://spiderMan/original-deb7add0a168be447e79abb37fdff08c-removebg-preview.png" id="10_nvl01"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_je5hr"]
 size = Vector2(120, 127)
@@ -97,8 +95,6 @@ text = "CobwebPoints:
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="player1" unique_id=1681871503]
 
-[node name="Camera2D" type="Camera2D" parent="player1" unique_id=1555519858]
-
 [node name="ringArea" type="Area2D" parent="." unique_id=1062239889 groups=["ringGroup"]]
 position = Vector2(-839.99994, 302.00003)
 rotation = 0.027615953
@@ -151,15 +147,5 @@ one_way_collision = true
 position = Vector2(-746.78125, -5.0625)
 shape = SubResource("RectangleShape2D_b26j0")
 one_way_collision = true
-
-[node name="tree" type="Sprite2D" parent="." unique_id=1141485111]
-position = Vector2(1069, 664)
-scale = Vector2(1.133727, 1.44)
-texture = ExtResource("9_n7ghd")
-
-[node name="cat" type="Sprite2D" parent="." unique_id=1875044032]
-position = Vector2(723.99994, 722.99994)
-scale = Vector2(-0.84612906, 0.76959926)
-texture = ExtResource("10_nvl01")
 
 [connection signal="area_entered" from="player1/pickupArea" to="player1" method="_on_pickup_area_area_entered"]
