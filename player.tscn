@@ -64,6 +64,9 @@ size = Vector2(293.5625, 74.25)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b26j0"]
 size = Vector2(167.5625, 60.125)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_s3hlo"]
+radius = 34.72958
+
 [node name="Node2D" type="Node2D" unique_id=1766070154]
 position = Vector2(929, 366)
 
@@ -78,6 +81,11 @@ sprite_frames = SubResource("SpriteFrames_i3pqv")
 
 [node name="pickupArea" type="Area2D" parent="player1" unique_id=1002811572]
 position = Vector2(216, 138)
+
+[node name="player1Hitbox" type="CollisionShape2D" parent="player1/pickupArea" unique_id=1797151804]
+position = Vector2(2, 22.000015)
+scale = Vector2(1.1474881, 1.1724601)
+shape = SubResource("RectangleShape2D_je5hr")
 
 [node name="player1Hitbox" type="CollisionShape2D" parent="player1" unique_id=1533574241]
 position = Vector2(213, 157.5)
@@ -149,8 +157,8 @@ position = Vector2(-747, -7)
 shape = SubResource("RectangleShape2D_b26j0")
 one_way_collision = true
 
-[node name="web1" type="Area2D" parent="." unique_id=782291542 groups=["cobwebGroup"]]
-position = Vector2(-567, 188)
+[node name="web1" type="Area2D" parent="." unique_id=782291542 groups=["cobwebGroup", "web"]]
+position = Vector2(-560, 188)
 scale = Vector2(0.9200012, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="web1" unique_id=329057665 groups=["cobwebGroup"]]
@@ -159,5 +167,69 @@ scale = Vector2(0.825, 0.8375)
 texture = ExtResource("9_b26j0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="web1" unique_id=1060182502 groups=["cobwebGroup"]]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="web1" unique_id=202398361]
+scale = Vector2(2.8097436, 2.5013258)
+shape = SubResource("CircleShape2D_s3hlo")
+
+[node name="web2" type="Area2D" parent="." unique_id=1984620578 groups=["cobwebGroup", "web"]]
+position = Vector2(-93, 198)
+scale = Vector2(0.9200012, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="web2" unique_id=617989847 groups=["cobwebGroup"]]
+position = Vector2(-14, 13)
+scale = Vector2(0.825, 0.8375)
+texture = ExtResource("9_b26j0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="web2" unique_id=1407794771 groups=["cobwebGroup"]]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="web2" unique_id=788499070]
+scale = Vector2(2.8097436, 2.5013258)
+shape = SubResource("CircleShape2D_s3hlo")
+
+[node name="web3" type="Area2D" parent="." unique_id=549501801 groups=["cobwebGroup", "web"]]
+position = Vector2(-341, -214)
+scale = Vector2(0.9200012, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="web3" unique_id=187908587 groups=["cobwebGroup"]]
+position = Vector2(-14, 13)
+scale = Vector2(0.825, 0.8375)
+texture = ExtResource("9_b26j0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="web3" unique_id=1595276917 groups=["cobwebGroup"]]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="web3" unique_id=2034347442]
+scale = Vector2(2.8097436, 2.5013258)
+shape = SubResource("CircleShape2D_s3hlo")
+
+[node name="web4" type="Area2D" parent="." unique_id=582083750 groups=["cobwebGroup", "web"]]
+position = Vector2(72, -64)
+scale = Vector2(0.9200012, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="web4" unique_id=857348868 groups=["cobwebGroup"]]
+position = Vector2(-14, 13)
+scale = Vector2(0.825, 0.8375)
+texture = ExtResource("9_b26j0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="web4" unique_id=928824389 groups=["cobwebGroup"]]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="web4" unique_id=502347809]
+scale = Vector2(2.8097436, 2.5013258)
+shape = SubResource("CircleShape2D_s3hlo")
+
+[node name="web5" type="Area2D" parent="." unique_id=1906586758 groups=["cobwebGroup", "web"]]
+position = Vector2(-731, -97)
+scale = Vector2(0.9200012, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="web5" unique_id=1091320651 groups=["cobwebGroup"]]
+position = Vector2(-14, 13)
+scale = Vector2(0.825, 0.8375)
+texture = ExtResource("9_b26j0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="web5" unique_id=919613303 groups=["cobwebGroup"]]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="web5" unique_id=1578793111]
+scale = Vector2(2.8097436, 2.5013258)
+shape = SubResource("CircleShape2D_s3hlo")
 
 [connection signal="area_entered" from="player1/pickupArea" to="player1" method="_on_pickup_area_area_entered"]

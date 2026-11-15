@@ -91,4 +91,4 @@ func _on_pickup_area_area_entered(area: Area2D) -> void:
 
 func _on_pickuparea_area_entered(area: Area2D) -> void:
 	if area.is_in_group("web"):
-				area.queue_free()
+		area.queue_free()
